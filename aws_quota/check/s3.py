@@ -11,3 +11,8 @@ class BucketCountCheck(QuotaCheck):
     @property
     def current(self):
         return len(self.boto_session.client('s3').list_buckets()['Buckets'])
+    
+    #Answer from AWS support:unfortunately at this moment in time there is no way for you to check this limit from your side.
+    @property
+    def maximum(self):
+        return int(-1)

@@ -50,10 +50,10 @@ class QuotaCheck:
         try:
             return int(self.sq_client.get_service_quota(ServiceCode=self.service_code, QuotaCode=self.quota_code)['Quota']['Value'])
         except self.sq_client.exceptions.NoSuchResourceException:
-                print('ERROR get maximum : '+str(self.service_code)+str(self.quota_code))
+                print('ERROR get maximum : '+str(self.service_code)+' / '+str(self.quota_code))
                 return int(-1)  
         except botocore.exceptions.EndpointConnectionError:
-            print('ERROR: get maximum, connection : '+str(self.service_code)+str(self.quota_code))
+            print('ERROR: get maximum, connection : '+str(self.service_code)+' / '+str(self.quota_code))
             return int(-1)               
         
     @property
@@ -61,10 +61,10 @@ class QuotaCheck:
         try:
             return int(self.sq_client.get_aws_default_service_quota(ServiceCode=self.service_code, QuotaCode=self.quota_code)['Quota']['Value'])
         except self.sq_client.exceptions.NoSuchResourceException:
-            print('ERROR get default : '+str(self.service_code)+str(self.quota_code))
+            print('ERROR get default : '+str(self.service_code)+' / '+str(self.quota_code))
             return int(-1)
         except botocore.exceptions.EndpointConnectionError:
-            print('ERROR get defult, connection : '+str(self.service_code)+str(self.quota_code))
+            print('ERROR get defult, connection : '+str(self.service_code)+' / '+str(self.quota_code))
             return int(-1)                        
 
     @property

@@ -56,6 +56,8 @@ class Runner:
     def __report(self, description, scope, current, maximum, awsdefault) -> ReportResult:
         if maximum > 0:
             percentage = (current / maximum)
+        elif awsdefault > 0:
+            percentage = (current / awsdefault)
         else:
             percentage = self.error_threshold
 

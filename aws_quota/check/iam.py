@@ -31,8 +31,7 @@ class RoleCountCheck(QuotaCheck):
 
     @property
     def maximum(self):
-    #    return self.boto_session.client('iam').get_account_summary()['SummaryMap']['UsersQuota']
-        return int(-1)
+        return self.boto_session.client('iam').get_account_summary()['SummaryMap']['UsersQuota']
 
     @property
     def current(self):

@@ -54,10 +54,10 @@ class Runner:
         self.fail_on_warning = fail_on_error
 
     def __report(self, description, scope, current, maximum, awsdefault) -> ReportResult:
-        if maximum != 0:
+        if maximum > 0:
             percentage = (current / maximum)
         else:
-            percentage = 0
+            percentage = self.error_threshold
 
         if percentage <= self.warning_threshold:
             symbol = CHECKMARK
@@ -72,7 +72,7 @@ class Runner:
             color = 'red'
             result = Runner.ReportResult.ERROR
 
-        if awsdefault != maximum and awsdefault > 0:
+        if awsdefault != maximum and awsdefault > 0 and maximum > 0:
             defmax = 'NOTDEF'   
         else:
             defmax = ''         

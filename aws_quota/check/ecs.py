@@ -27,7 +27,7 @@ class ClusterCountCheck(QuotaCheck):
         return len(self.boto_session.client('ecs').list_clusters()['clusterArns'])
 
 class FargateSpotCountCheck(QuotaCheck):
-    key = "fargatespot_count"
+    key = "fargate_spot_count"
     description = "Fargate Spot in this account in the current Region"
     scope = QuotaScope.REGION
     service_code = 'fargate'
@@ -38,7 +38,7 @@ class FargateSpotCountCheck(QuotaCheck):
         return len(self.boto_session.client('ecs').list_clusters()['clusterArns'])
 
 class FargateDemandCountCheck(QuotaCheck):
-    key = "fargatedemand_count"
+    key = "fargate_on_demand_count"
     description = "Fargate On-Demand resource count in the current Region"
     scope = QuotaScope.REGION
     service_code = 'fargate'

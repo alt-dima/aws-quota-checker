@@ -74,7 +74,7 @@ class Runner:
             color = 'red'
             result = Runner.ReportResult.ERROR
 
-        if awsdefault != maximum and awsdefault > 0 and maximum > 0:
+        if awsdefault > 0 and maximum > 0 and awsdefault != maximum:
             defmax = 'NOTDEF'   
         else:
             defmax = ''         
